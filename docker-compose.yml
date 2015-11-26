@@ -1,0 +1,29 @@
+kodi:
+  image: "linuxserver/kodi-headless:15"
+  ports:
+    - "8080:8080"
+    - "9777:9777"
+  links:
+    - mysql:mysql
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - ./config/kodi/:/config/.kodi
+
+mysql:
+  image: "tutum/mysql:5.6"
+  ports:
+    - "3307:3306"
+  environment:
+    ON_CREATE_DB: kodi_video
+    MYSQL_USER: kodi
+    MYSQL_PASS: kodi
+    #STARTUP_SQL: /tmp/mysql-script/startup.sql
+  volumes:
+    - ./config/mysql:/tmp/mysql-script
+    - ./data/mysql:/var/lib/mysql
+
+#video-server:
+#  image: "jalle19/xbmc-video-server"
+#  ports:
+#    - "80:80"
+#
