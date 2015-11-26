@@ -1,15 +1,18 @@
 kodi:
-  image: "linuxserver/kodi-headless:15"
+  image: "linuxserver/kodi-headless"
   ports:
     - "8080:8080"
     - "9777:9777"
+  environment:
+    KODI_VER: 15
+    TZ: "Europe/Helsinki"
   links:
-    - mysql:mysql
+    - kodi-mysql:mysql
   volumes:
-    - /etc/localtime:/etc/localtime:ro
+    #- /etc/localtime:/etc/localtime:ro
     - ./config/kodi/:/config/.kodi
 
-mysql:
+kodi-mysql:
   image: "tutum/mysql:5.6"
   ports:
     - "3307:3306"
@@ -19,7 +22,7 @@ mysql:
     MYSQL_PASS: kodi
     #STARTUP_SQL: /tmp/mysql-script/startup.sql
   volumes:
-    - ./config/mysql:/tmp/mysql-script
+    # - ./config/mysql:/tmp/mysql-script
     - ./data/mysql:/var/lib/mysql
 
 #video-server:
