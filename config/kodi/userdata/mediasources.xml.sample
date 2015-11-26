@@ -1,0 +1,5 @@
+<mediasources>
+    <network>
+        <location id="2">smb://username:password@PATH/TO/SHARE</location>
+    </network>
+</mediasources>
