@@ -26,22 +26,14 @@ kodi-mysql:
     # - ./config/mysql:/tmp/mysql-script
     - ./data/mysql:/var/lib/mysql
 
-<<<<<<< HEAD
-video-server:
-  image: "mrskug/xbmc-video-server"
-=======
 kodi-video-server:
   image: "jalle19/xbmc-video-server"
->>>>>>> ff188ceebcf713351d87f8ab8a79dd6e3c2fcff8
   ports:
     - "8081:80"
   links:
     - kodi-mysql:mysql
     - kodi:kodi
-<<<<<<< HEAD
-  volumes:
-    - ./data/xvs/data:/src/src/protected/data
-    - ./data/xvs/runtime:/src/src/protected/runtime
-    - ./data/xvs/images:/src/src/images
-=======
->>>>>>> ff188ceebcf713351d87f8ab8a79dd6e3c2fcff8
+#  volumes:
+#    - ./data/xvs/data:/src/src/protected/data
+#    - ./data/xvs/runtime:/src/src/protected/runtime
+#    - ./data/xvs/images:/src/src/images
