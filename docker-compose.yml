@@ -11,7 +11,7 @@ kodi:
     - kodi-mysql:mysql
   volumes:
     #- /etc/localtime:/etc/localtime:ro
-    - ./config/kodi/:/config/.kodi
+    - ./config/.kodi/:/config/.kodi
 
 kodi-mysql:
   image: "tutum/mysql:5.6"
@@ -31,7 +31,6 @@ kodi-video-server:
   ports:
     - "8081:80"
   links:
-    - kodi-mysql:mysql
     - kodi:kodi
 #  volumes:
 #    - ./data/xvs/data:/src/src/protected/data
